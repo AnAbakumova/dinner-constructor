@@ -1,33 +1,28 @@
 package ru.practicum.dinner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
+import java.util.List;
+
 
 public class DinnerConstructor {
-    static HashMap<String, ArrayList<String>> menu = new HashMap<>();
-    ArrayList<String> listOfDishes, dishCombo;
-    ArrayList<ArrayList<String>> listOfCombos;
-    int randomNumber;
-    String randomDish, dishTypeForCombo;
+    static Map<String, List<String>> menu = new HashMap<>();
 
     public void addNewDish(String dishType, String dishName) {
+        List<String> listOfDishes = new ArrayList<>();
         if (checkType(dishType)) {
             listOfDishes = menu.get(dishType);
             listOfDishes.add(dishName);
         } else  {
-            listOfDishes = new ArrayList<>();
             listOfDishes.add(dishName);
         }
         menu.put(dishType, listOfDishes);
-        //System.out.println(menu.keySet());
-        //System.out.println(menu.values());
     }
 
-    public void generateCombo(int numberOfCombos, ArrayList <String> dishTypeList) {
-        //System.out.println("Зашли в метод");
-        dishCombo = new ArrayList<>(dishTypeList.size());
-        listOfCombos = new ArrayList<>();
+    public void generateCombo(int numberOfCombos, List<String> dishTypeList) {
+        int randomNumber;
+        String randomDish, dishTypeForCombo;
+        List<String> dishCombo = new ArrayList<>(dishTypeList.size());
+
         for (int i = 0; i < numberOfCombos; i++) {
             for (int j = 0; j < dishTypeList.size(); j++) {
                 dishTypeForCombo = dishTypeList.get(j);

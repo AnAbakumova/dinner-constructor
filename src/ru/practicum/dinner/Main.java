@@ -1,6 +1,7 @@
 package ru.practicum.dinner;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -54,19 +55,16 @@ public class Main {
 
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
-        ArrayList <String> dishTypeList = new ArrayList<>();
+        List<String> dishTypeList = new ArrayList<>();
 
         while (!nextItem.isEmpty()) {
-            //System.out.println("Пока вводим");
             if (dc.checkType(nextItem)) {
                 dishTypeList.add(nextItem);
-                System.out.println(dishTypeList);
             } else {
                 System.out.println("Нет такого типа. Попробуйте ещё раз");
             }
             nextItem = scanner.nextLine();
         }
-        //System.out.println("Закончен ввод");
         dc.generateCombo(numberOfCombos,dishTypeList);
     }
 }
